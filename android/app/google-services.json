@@ -1,0 +1,41 @@
+{
+  "project_info": {
+    "project_number": "427262513189",
+    "firebase_url": "https://hanzade-rezervasyon.firebaseio.com",
+    "project_id": "hanzade-rezervasyon",
+    "storage_bucket": "hanzade-rezervasyon.appspot.com"
+  },
+  "client": [{
+    "client_info": {
+      "mobilesdk_app_id": "1:427262513189:android:1e3f74d1820ee996e2afcc",
+      "android_client_info": {
+        "package_name": "com.hanzade_rezervasyon.uygulama"
+      }
+    },
+    "oauth_client": [{
+        "client_id": "427262513189-4vkjuptispjv32nsb3dtij7ic0lmpv8k.apps.googleusercontent.com",
+        "client_type": 1,
+        "android_info": {
+          "package_name": "com.hanzade_rezervasyon.uygulama",
+          "certificate_hash": "da3f39b37b6f0a4caaa37d060963868c1da2c174"
+        }
+      },
+      {
+        "client_id": "427262513189-ceb8jjpvt8oab075aodkgp8ulcq84evn.apps.googleusercontent.com",
+        "client_type": 3
+      }
+    ],
+    "api_key": [{
+      "current_key": "AIzaSyD0ek6oYoBjYuV-ghBrG_jmAtlOiG3PLGg"
+    }],
+    "services": {
+      "appinvite_service": {
+        "other_platform_oauth_client": [{
+          "client_id": "427262513189-ceb8jjpvt8oab075aodkgp8ulcq84evn.apps.googleusercontent.com",
+          "client_type": 3
+        }]
+      }
+    }
+  }],
+  "configuration_version": "1"
+}
