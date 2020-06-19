@@ -168,114 +168,267 @@ class _BilgiGirisSayfasiState extends State<BilgiGirisSayfasi> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: Stack(
-        children: <Widget>[
-          Align(
-            alignment: Alignment.topCenter,
-            child: new Container(
-              decoration: new BoxDecoration(
-                image: new DecorationImage(
-                  image: new ExactAssetImage('assets/rezFoto.jpg'),
-                  fit: BoxFit.cover,
+    return WillPopScope(
+      onWillPop: () {
+        Navigator.pushNamed(context, "/karsilama");
+        return Future.value(false);
+      },
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        body: Stack(
+          children: <Widget>[
+            Align(
+              alignment: Alignment.topCenter,
+              child: new Container(
+                decoration: new BoxDecoration(
+                  image: new DecorationImage(
+                    image: new ExactAssetImage('assets/rezFoto.jpg'),
+                    fit: BoxFit.cover,
+                  ),
                 ),
-              ),
-              child: new BackdropFilter(
-                filter: new ImageFilter.blur(sigmaX: 0.0, sigmaY: 0.0),
-                child: new Container(
-                  decoration:
-                      new BoxDecoration(color: Colors.white.withOpacity(0.0)),
+                child: new BackdropFilter(
+                  filter: new ImageFilter.blur(sigmaX: 0.0, sigmaY: 0.0),
+                  child: new Container(
+                    decoration:
+                        new BoxDecoration(color: Colors.white.withOpacity(0.0)),
+                  ),
                 ),
               ),
             ),
-          ),
-          Align(
-            alignment: Alignment.topCenter,
-            child: new Container(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              color: Colors.black.withOpacity(0.5),
+            Align(
+              alignment: Alignment.topCenter,
+              child: new Container(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                color: Colors.black.withOpacity(0.5),
+              ),
             ),
-          ),
-          SafeArea(
-            child: Stack(
-              children: <Widget>[
-                MediaQuery.of(context).viewInsets.bottom != 0
-                    ? Container()
-                    : Align(
-                        alignment: Alignment.topCenter,
-                        child: Padding(
-                          padding: EdgeInsets.all(10),
-                          child: Container(
-                            width: 175,
-                            height: 175,
-                            decoration: new BoxDecoration(
-                              image: new DecorationImage(
-                                image: new ExactAssetImage('assets/logo.png'),
-                                fit: BoxFit.contain,
+            SafeArea(
+              child: Stack(
+                children: <Widget>[
+                  MediaQuery.of(context).viewInsets.bottom != 0
+                      ? Container()
+                      : Align(
+                          alignment: Alignment.topCenter,
+                          child: Padding(
+                            padding: EdgeInsets.all(10),
+                            child: Container(
+                              width: 175,
+                              height: 175,
+                              decoration: new BoxDecoration(
+                                image: new DecorationImage(
+                                  image: new ExactAssetImage('assets/logo.png'),
+                                  fit: BoxFit.contain,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                Align(
-                  alignment: Alignment.center,
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                    child: AnimatedContainer(
-                      duration: Duration(milliseconds: 700),
-                      curve: Curves.fastOutSlowIn,
-                      decoration: BoxDecoration(
-                          color: Colors.transparent,
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(60),
-                              topRight: Radius.circular(60),
-                              bottomLeft: Radius.circular(60),
-                              bottomRight: Radius.circular(60))),
-                      height: _height,
-                      width: _width,
-                      alignment: Alignment.center,
-                      child: devamKontrol
-                          ? Center(
-                              child: CircularProgressIndicator(),
-                            )
-                          : Form(
-                              key: formKey,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 20,
-                                        right: 20,
-                                        top: 20,
-                                        bottom: 10),
-                                    child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: <Widget>[
-                                          Text(
-                                            "Kişi Sayısı",
-                                            style: GoogleFonts.teko(
-                                                color: Colors.white,
-                                                fontSize: 18),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                      child: AnimatedContainer(
+                        duration: Duration(milliseconds: 700),
+                        curve: Curves.fastOutSlowIn,
+                        decoration: BoxDecoration(
+                            color: Colors.transparent,
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(60),
+                                topRight: Radius.circular(60),
+                                bottomLeft: Radius.circular(60),
+                                bottomRight: Radius.circular(60))),
+                        height: _height,
+                        width: _width,
+                        alignment: Alignment.center,
+                        child: devamKontrol
+                            ? Center(
+                                child: CircularProgressIndicator(),
+                              )
+                            : Form(
+                                key: formKey,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                          left: 20,
+                                          right: 20,
+                                          top: 20,
+                                          bottom: 10),
+                                      child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: <Widget>[
+                                            Text(
+                                              "Kişi Sayısı",
+                                              style: GoogleFonts.teko(
+                                                  color: Colors.white,
+                                                  fontSize: 18),
+                                            ),
+                                            Container()
+                                          ]),
+                                    ),
+                                    Padding(
+                                      padding:
+                                          EdgeInsets.only(left: 0, right: 0),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.grey[300]
+                                                .withOpacity(.3),
+                                            borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(10),
+                                                topRight: Radius.circular(10),
+                                                bottomLeft: Radius.circular(10),
+                                                bottomRight:
+                                                    Radius.circular(10))),
+                                        child: FittedBox(
+                                          fit: BoxFit.scaleDown,
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: <Widget>[
+                                              Row(children: <Widget>[
+                                                Radio(
+                                                  materialTapTargetSize:
+                                                      MaterialTapTargetSize
+                                                          .shrinkWrap,
+                                                  value: 1,
+                                                  groupValue: _secilenRadio,
+                                                  onChanged: (value) {
+                                                    setSecilenRadio(value);
+                                                  },
+                                                  activeColor: Colors.white,
+                                                ),
+                                                Text(
+                                                  "1",
+                                                  style: GoogleFonts.teko(
+                                                      color: Colors.white),
+                                                )
+                                              ]),
+                                              Row(children: <Widget>[
+                                                Radio(
+                                                  materialTapTargetSize:
+                                                      MaterialTapTargetSize
+                                                          .shrinkWrap,
+                                                  value: 2,
+                                                  groupValue: _secilenRadio,
+                                                  onChanged: (value) {
+                                                    setSecilenRadio(value);
+                                                  },
+                                                  activeColor: Colors.white,
+                                                ),
+                                                Text(
+                                                  "2",
+                                                  style: GoogleFonts.teko(
+                                                      color: Colors.white),
+                                                )
+                                              ]),
+                                              Row(children: <Widget>[
+                                                Radio(
+                                                  materialTapTargetSize:
+                                                      MaterialTapTargetSize
+                                                          .shrinkWrap,
+                                                  value: 3,
+                                                  groupValue: _secilenRadio,
+                                                  onChanged: (value) {
+                                                    setSecilenRadio(value);
+                                                  },
+                                                  activeColor: Colors.white,
+                                                ),
+                                                Text(
+                                                  "3",
+                                                  style: GoogleFonts.teko(
+                                                      color: Colors.white),
+                                                )
+                                              ]),
+                                              Row(children: <Widget>[
+                                                Radio(
+                                                  materialTapTargetSize:
+                                                      MaterialTapTargetSize
+                                                          .shrinkWrap,
+                                                  value: 4,
+                                                  groupValue: _secilenRadio,
+                                                  onChanged: (value) {
+                                                    setSecilenRadio(value);
+                                                  },
+                                                  activeColor: Colors.white,
+                                                ),
+                                                Text(
+                                                  "4",
+                                                  style: GoogleFonts.teko(
+                                                      color: Colors.white),
+                                                )
+                                              ]),
+                                              Row(children: <Widget>[
+                                                Radio(
+                                                  materialTapTargetSize:
+                                                      MaterialTapTargetSize
+                                                          .shrinkWrap,
+                                                  value: 5,
+                                                  groupValue: _secilenRadio,
+                                                  onChanged: (value) {
+                                                    setSecilenRadio(value);
+                                                  },
+                                                  activeColor: Colors.white,
+                                                ),
+                                                Text(
+                                                  "4+   ",
+                                                  style: GoogleFonts.teko(
+                                                      color: Colors.white),
+                                                )
+                                              ]),
+                                            ],
                                           ),
-                                          Container()
-                                        ]),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.only(left: 0, right: 0),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          color:
-                                              Colors.grey[300].withOpacity(.3),
-                                          borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(10),
-                                              topRight: Radius.circular(10),
-                                              bottomLeft: Radius.circular(10),
-                                              bottomRight:
-                                                  Radius.circular(10))),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Align(
+                                      alignment: Alignment.center,
+                                      child: Padding(
+                                        padding:
+                                            EdgeInsets.fromLTRB(20, 0, 20, 0),
+                                        child: TextFormField(
+                                          controller: _rezervasyonNotu,
+                                          style: GoogleFonts.teko(
+                                              color: Colors.white),
+                                          decoration: InputDecoration(
+                                            enabledBorder:
+                                                const OutlineInputBorder(
+                                                    borderSide:
+                                                        const BorderSide(
+                                                            color: Colors.white,
+                                                            width: 0.5)),
+                                            labelText: "Rezervasyon Notu",
+                                            labelStyle: GoogleFonts.teko(
+                                                color: Colors.white),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: const BorderSide(
+                                                color: Colors.white,
+                                                width: 2.0,
+                                              ),
+                                            ),
+                                            border: new OutlineInputBorder(
+                                              borderSide: const BorderSide(
+                                                color: Colors.white,
+                                                width: 2.0,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Padding(
+                                      padding:
+                                          EdgeInsets.only(left: 20, right: 20),
                                       child: FittedBox(
                                         fit: BoxFit.scaleDown,
                                         child: Row(
@@ -284,331 +437,195 @@ class _BilgiGirisSayfasiState extends State<BilgiGirisSayfasi> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.center,
                                           children: <Widget>[
-                                            Row(children: <Widget>[
-                                              Radio(
-                                                materialTapTargetSize:
-                                                    MaterialTapTargetSize
-                                                        .shrinkWrap,
-                                                value: 1,
-                                                groupValue: _secilenRadio,
-                                                onChanged: (value) {
-                                                  setSecilenRadio(value);
-                                                },
-                                                activeColor: Colors.white,
-                                              ),
-                                              Text(
-                                                "1",
+                                            SizedBox(
+                                              width: 200,
+                                              child: TextFormField(
+                                                controller: _rezervasyonTarihi,
+                                                validator: Validators.compose(
+                                                  [
+                                                    Validators.required(
+                                                        "Tarih seçiniz."),
+                                                  ],
+                                                ),
+                                                readOnly: true,
                                                 style: GoogleFonts.teko(
                                                     color: Colors.white),
-                                              )
-                                            ]),
-                                            Row(children: <Widget>[
-                                              Radio(
-                                                materialTapTargetSize:
-                                                    MaterialTapTargetSize
-                                                        .shrinkWrap,
-                                                value: 2,
-                                                groupValue: _secilenRadio,
-                                                onChanged: (value) {
-                                                  setSecilenRadio(value);
-                                                },
-                                                activeColor: Colors.white,
+                                                decoration: InputDecoration(
+                                                  enabledBorder:
+                                                      const OutlineInputBorder(
+                                                          borderSide:
+                                                              const BorderSide(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  width: 0.5)),
+                                                  labelText:
+                                                      _secilenTarih == null
+                                                          ? "Tarih Seçiniz"
+                                                          : "Seçtiğiniz Tarih",
+                                                  labelStyle: GoogleFonts.teko(
+                                                      color: Colors.white),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide:
+                                                        const BorderSide(
+                                                      color: Colors.white,
+                                                      width: 2.0,
+                                                    ),
+                                                  ),
+                                                  border:
+                                                      new OutlineInputBorder(
+                                                    borderSide:
+                                                        const BorderSide(
+                                                      color: Colors.white,
+                                                      width: 2.0,
+                                                    ),
+                                                  ),
+                                                ),
                                               ),
-                                              Text(
-                                                "2",
-                                                style: GoogleFonts.teko(
-                                                    color: Colors.white),
-                                              )
-                                            ]),
-                                            Row(children: <Widget>[
-                                              Radio(
-                                                materialTapTargetSize:
-                                                    MaterialTapTargetSize
-                                                        .shrinkWrap,
-                                                value: 3,
-                                                groupValue: _secilenRadio,
-                                                onChanged: (value) {
-                                                  setSecilenRadio(value);
-                                                },
-                                                activeColor: Colors.white,
+                                            ),
+                                            InkWell(
+                                              child: Container(
+                                                height: 60,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                    topRight:
+                                                        Radius.circular(10),
+                                                    bottomRight:
+                                                        Radius.circular(10),
+                                                  ),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsets.all(10),
+                                                  child: Center(
+                                                    child: Text(
+                                                      "Tarih Seç",
+                                                      style: GoogleFonts.teko(
+                                                          color: Colors.black,
+                                                          fontSize: 18),
+                                                    ),
+                                                  ),
+                                                ),
                                               ),
-                                              Text(
-                                                "3",
-                                                style: GoogleFonts.teko(
-                                                    color: Colors.white),
-                                              )
-                                            ]),
-                                            Row(children: <Widget>[
-                                              Radio(
-                                                materialTapTargetSize:
-                                                    MaterialTapTargetSize
-                                                        .shrinkWrap,
-                                                value: 4,
-                                                groupValue: _secilenRadio,
-                                                onChanged: (value) {
-                                                  setSecilenRadio(value);
+                                              onTap: () {
+                                                DatePicker.showDateTimePicker(
+                                                    context,
+                                                    showTitleActions: true,
+                                                    minTime: DateTime.now().add(
+                                                        Duration(hours: 1)),
+                                                    maxTime: DateTime.now().add(
+                                                        Duration(days: 10)),
+                                                    theme: DatePickerTheme(
+                                                      headerColor:
+                                                          hexToColor("#A6ABAB"),
+                                                      backgroundColor:
+                                                          hexToColor("#3D3D3D"),
+                                                      itemStyle:
+                                                          GoogleFonts.roboto(
+                                                        color: Colors.white,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 18,
+                                                      ),
+                                                      cancelStyle:
+                                                          GoogleFonts.roboto(
+                                                              color:
+                                                                  Colors.black),
+                                                      doneStyle:
+                                                          GoogleFonts.roboto(
+                                                              color:
+                                                                  Colors.white,
+                                                              fontSize: 16),
+                                                    ), onChanged: (date) {
+                                                  print(
+                                                      'change $date in time zone ' +
+                                                          date.timeZoneOffset
+                                                              .inHours
+                                                              .toString());
+                                                }, onConfirm: (date) {
+                                                  if (date.hour < 8 ||
+                                                      date.hour > 21) {
+                                                    BotToast.showText(
+                                                        text:
+                                                            "Lütfen 08:00 ile 22:00 arasında bir saat seçiniz.");
+                                                  } else {
+                                                    _secilenTarih = date;
+                                                    _rezervasyonTarihi
+                                                        .text = DateFormat(
+                                                            'yyyy-MM-dd HH:mm')
+                                                        .format(_secilenTarih);
+                                                    setState(() {});
+                                                    print('confirm $date');
+                                                  }
                                                 },
-                                                activeColor: Colors.white,
-                                              ),
-                                              Text(
-                                                "4",
-                                                style: GoogleFonts.teko(
-                                                    color: Colors.white),
-                                              )
-                                            ]),
-                                            Row(children: <Widget>[
-                                              Radio(
-                                                materialTapTargetSize:
-                                                    MaterialTapTargetSize
-                                                        .shrinkWrap,
-                                                value: 5,
-                                                groupValue: _secilenRadio,
-                                                onChanged: (value) {
-                                                  setSecilenRadio(value);
-                                                },
-                                                activeColor: Colors.white,
-                                              ),
-                                              Text(
-                                                "4+   ",
-                                                style: GoogleFonts.teko(
-                                                    color: Colors.white),
-                                              )
-                                            ]),
+                                                    currentTime: DateTime.now()
+                                                        .add(
+                                                            Duration(hours: 1)),
+                                                    locale: LocaleType.tr);
+                                              },
+                                            ),
                                           ],
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Align(
-                                    alignment: Alignment.center,
-                                    child: Padding(
-                                      padding:
-                                          EdgeInsets.fromLTRB(20, 0, 20, 0),
-                                      child: TextFormField(
-                                        controller: _rezervasyonNotu,
-                                        style: GoogleFonts.teko(
-                                            color: Colors.white),
-                                        decoration: InputDecoration(
-                                          enabledBorder:
-                                              const OutlineInputBorder(
-                                                  borderSide: const BorderSide(
-                                                      color: Colors.white,
-                                                      width: 0.5)),
-                                          labelText: "Rezervasyon Notu",
-                                          labelStyle: GoogleFonts.teko(
-                                              color: Colors.white),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
-                                              color: Colors.white,
-                                              width: 2.0,
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Align(
+                                      alignment: Alignment.bottomCenter,
+                                      child: InkWell(
+                                        child: Container(
+                                          width: globals.telefonWidth - 110,
+                                          height: 50,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.only(
+                                              topRight: Radius.circular(10),
+                                              bottomRight: Radius.circular(10),
+                                              topLeft: Radius.circular(10),
+                                              bottomLeft: Radius.circular(10),
                                             ),
                                           ),
-                                          border: new OutlineInputBorder(
-                                            borderSide: const BorderSide(
-                                              color: Colors.white,
-                                              width: 2.0,
+                                          child: Padding(
+                                            padding: EdgeInsets.all(10),
+                                            child: Center(
+                                              child: Text(
+                                                "Devam",
+                                                style: GoogleFonts.teko(
+                                                    color: Colors.black,
+                                                    fontSize: 18),
+                                              ),
                                             ),
                                           ),
                                         ),
+                                        onTap: () {
+                                          if (formKey.currentState.validate()) {
+                                            globals.rezervasyonKisiSayisi =
+                                                _secilenRadio.toString();
+                                            globals.rezervasyonNotu =
+                                                _rezervasyonNotu.text
+                                                    .toString();
+                                            globals.rezervasyonTarih =
+                                                _secilenTarih;
+                                            _getMasa();
+                                            devamKontrol = true;
+                                            setState(() {});
+                                          }
+                                        },
                                       ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Padding(
-                                    padding:
-                                        EdgeInsets.only(left: 20, right: 20),
-                                    child: FittedBox(
-                                      fit: BoxFit.scaleDown,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: <Widget>[
-                                          SizedBox(
-                                            width: 200,
-                                            child: TextFormField(
-                                              controller: _rezervasyonTarihi,
-                                              validator: Validators.compose(
-                                                [
-                                                  Validators.required(
-                                                      "Tarih seçiniz."),
-                                                ],
-                                              ),
-                                              readOnly: true,
-                                              style: GoogleFonts.teko(
-                                                  color: Colors.white),
-                                              decoration: InputDecoration(
-                                                enabledBorder:
-                                                    const OutlineInputBorder(
-                                                        borderSide:
-                                                            const BorderSide(
-                                                                color: Colors
-                                                                    .white,
-                                                                width: 0.5)),
-                                                labelText: _secilenTarih == null
-                                                    ? "Tarih Seçiniz"
-                                                    : "Seçtiğiniz Tarih",
-                                                labelStyle: GoogleFonts.teko(
-                                                    color: Colors.white),
-                                                focusedBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: const BorderSide(
-                                                    color: Colors.white,
-                                                    width: 2.0,
-                                                  ),
-                                                ),
-                                                border: new OutlineInputBorder(
-                                                  borderSide: const BorderSide(
-                                                    color: Colors.white,
-                                                    width: 2.0,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          InkWell(
-                                            child: Container(
-                                              height: 60,
-                                              decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                borderRadius: BorderRadius.only(
-                                                  topRight: Radius.circular(10),
-                                                  bottomRight:
-                                                      Radius.circular(10),
-                                                ),
-                                              ),
-                                              child: Padding(
-                                                padding: EdgeInsets.all(10),
-                                                child: Center(
-                                                  child: Text(
-                                                    "Tarih Seç",
-                                                    style: GoogleFonts.teko(
-                                                        color: Colors.black,
-                                                        fontSize: 18),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            onTap: () {
-                                              DatePicker.showDateTimePicker(
-                                                  context,
-                                                  showTitleActions: true,
-                                                  minTime: DateTime.now()
-                                                      .add(Duration(hours: 1)),
-                                                  maxTime: DateTime.now()
-                                                      .add(Duration(days: 10)),
-                                                  theme: DatePickerTheme(
-                                                    headerColor:
-                                                        hexToColor("#A6ABAB"),
-                                                    backgroundColor:
-                                                        hexToColor("#3D3D3D"),
-                                                    itemStyle:
-                                                        GoogleFonts.roboto(
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 18,
-                                                    ),
-                                                    cancelStyle:
-                                                        GoogleFonts.roboto(
-                                                            color:
-                                                                Colors.black),
-                                                    doneStyle:
-                                                        GoogleFonts.roboto(
-                                                            color: Colors.white,
-                                                            fontSize: 16),
-                                                  ), onChanged: (date) {
-                                                print(
-                                                    'change $date in time zone ' +
-                                                        date.timeZoneOffset
-                                                            .inHours
-                                                            .toString());
-                                              }, onConfirm: (date) {
-                                                if (date.hour < 8 ||
-                                                    date.hour > 22) {
-                                                  BotToast.showText(
-                                                      text:
-                                                          "Lütfen 08:00 ile 22:00 arasında bir saat seçiniz.");
-                                                } else {
-                                                  _secilenTarih = date;
-                                                  _rezervasyonTarihi
-                                                      .text = DateFormat(
-                                                          'yyyy-MM-dd HH:mm')
-                                                      .format(_secilenTarih);
-                                                  setState(() {});
-                                                  print('confirm $date');
-                                                }
-                                              },
-                                                  currentTime: DateTime.now()
-                                                      .add(Duration(hours: 1)),
-                                                  locale: LocaleType.tr);
-                                            },
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Align(
-                                    alignment: Alignment.bottomCenter,
-                                    child: InkWell(
-                                      child: Container(
-                                        width: globals.telefonWidth - 110,
-                                        height: 50,
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.only(
-                                            topRight: Radius.circular(10),
-                                            bottomRight: Radius.circular(10),
-                                            topLeft: Radius.circular(10),
-                                            bottomLeft: Radius.circular(10),
-                                          ),
-                                        ),
-                                        child: Padding(
-                                          padding: EdgeInsets.all(10),
-                                          child: Center(
-                                            child: Text(
-                                              "Devam",
-                                              style: GoogleFonts.teko(
-                                                  color: Colors.black,
-                                                  fontSize: 18),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      onTap: () {
-                                        if (formKey.currentState.validate()) {
-                                          globals.rezervasyonKisiSayisi =
-                                              _secilenRadio.toString();
-                                          globals.rezervasyonNotu =
-                                              _rezervasyonNotu.text.toString();
-                                          globals.rezervasyonTarih =
-                                              _secilenTarih;
-                                          _getMasa();
-                                          devamKontrol = true;
-                                          setState(() {});
-                                        }
-                                      },
-                                    ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

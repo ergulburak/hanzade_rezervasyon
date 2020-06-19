@@ -81,38 +81,60 @@ class _RezervasyonOnizlemeState extends State<RezervasyonOnizleme> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: Stack(
-        children: <Widget>[
-          Align(
-            alignment: Alignment.topCenter,
-            child: new Container(
-              decoration: new BoxDecoration(
-                image: new DecorationImage(
-                  image: new ExactAssetImage('assets/rezFoto.jpg'),
-                  fit: BoxFit.cover,
+    return WillPopScope(
+      onWillPop: () => showDialog<bool>(
+        context: context,
+        builder: (c) => AlertDialog(
+          title: Text('Uyarı'),
+          content: Text('Rezervasyonu iptal etmek istediğine emin misin?'),
+          actions: [
+            FlatButton(
+              child: Text('Evet'),
+              onPressed: () {
+                Navigator.pop(c, false);
+                Navigator.pushNamed(context, "/karsilama");
+              },
+            ),
+            FlatButton(
+              child: Text('Hayır'),
+              onPressed: () => Navigator.pop(c, false),
+            ),
+          ],
+        ),
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        body: Stack(
+          children: <Widget>[
+            Align(
+              alignment: Alignment.topCenter,
+              child: new Container(
+                decoration: new BoxDecoration(
+                  image: new DecorationImage(
+                    image: new ExactAssetImage('assets/rezFoto.jpg'),
+                    fit: BoxFit.cover,
+                  ),
                 ),
-              ),
-              child: new BackdropFilter(
-                filter: new ImageFilter.blur(sigmaX: 0.0, sigmaY: 0.0),
-                child: new Container(
-                  decoration:
-                      new BoxDecoration(color: Colors.white.withOpacity(0.0)),
+                child: new BackdropFilter(
+                  filter: new ImageFilter.blur(sigmaX: 0.0, sigmaY: 0.0),
+                  child: new Container(
+                    decoration:
+                        new BoxDecoration(color: Colors.white.withOpacity(0.0)),
+                  ),
                 ),
               ),
             ),
-          ),
-          Align(
-            alignment: Alignment.topCenter,
-            child: new Container(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              color: Colors.black.withOpacity(0.5),
+            Align(
+              alignment: Alignment.topCenter,
+              child: new Container(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                color: Colors.black.withOpacity(0.5),
+              ),
             ),
-          ),
-          butonKont ? Center(child: CircularProgressIndicator()) : onizleme(),
-        ],
+            butonKont ? Center(child: CircularProgressIndicator()) : onizleme(),
+          ],
+        ),
       ),
     );
   }
