@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get_ip/get_ip.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hanzade_rezervasyon/Services/db.dart';
 import 'package:hanzade_rezervasyon/Services/globals.dart' as globals;
@@ -25,6 +26,21 @@ class _RezervasyonOnizlemeState extends State<RezervasyonOnizleme> {
   }
 
   smsOnay() async {
+    final PhoneVerificationFailed verificationFailed =
+        (AuthException exception) {
+      print("verification failed this bullshit");
+      if (exception.message.contains('not authorized'))
+        print('Something weird has gone really wrong, please do not try later');
+      else if (exception.message.contains('Network'))
+        print('Please check your internet connection and try again');
+      else if (exception.message.contains("credential is invalid"))
+        print("credential is invalid");
+      else {
+        print('${exception.message}');
+        BotToast.showText(
+            text: exception.message, duration: Duration(seconds: 5));
+      }
+    };
     await FirebaseAuth.instance.verifyPhoneNumber(
         phoneNumber: widget.user.phoneNumber,
         timeout: const Duration(minutes: 2),
@@ -42,7 +58,9 @@ class _RezervasyonOnizlemeState extends State<RezervasyonOnizleme> {
               globals.rezervasyonNotu,
               globals.rezervasyonMasa,
               DateFormat('yyyy-MM-dd HH:mm').format(globals.rezervasyonTarih),
-            ).then((value) {
+            ).then((value) async {
+              String ipAddress = await GetIp.ipAddress;
+              Services.tokenInsert(value, ipAddress);
               butonKont = false;
               Navigator.of(context).pushNamed("/karsilama");
               BotToast.showNotification(
@@ -72,7 +90,7 @@ class _RezervasyonOnizlemeState extends State<RezervasyonOnizleme> {
             });
           });
         },
-        verificationFailed: null,
+        verificationFailed: verificationFailed,
         codeSent: (verificationId, [forceResendingToken]) async {
           print("Kod Yollandı.");
         },

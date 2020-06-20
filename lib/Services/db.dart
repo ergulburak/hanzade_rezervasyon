@@ -12,6 +12,8 @@ class Services {
   static const _GET_REZERVASYON_ALL_BY_TARIH_ACTION =
       'REZERVASYON_ALL_BY_TARIH';
 
+  static const _SET_INSERT_TOKEN_ACTION = 'INSERT_TOKEN';
+
   static const _ADD_REZERVASYON_KAYIT_ACTION = 'REZERVASYON_KAYIT';
 /*
   ****************************************************************************
@@ -68,6 +70,36 @@ class Services {
       map['masaid'] = masaid;
       final response = await http.post(ROOT, body: map);
       print('Masa bilgi: ${response.body}' + " id=" + masaid);
+      if (200 == response.statusCode) {
+        String list = response.body;
+        return list;
+      } else {
+        return "NULL";
+      }
+    } catch (e) {
+      print("MasaBilgi Hata: " + e);
+      return "NULL";
+    }
+  }
+
+  /*
+  ****************************************************************************
+  ****************************************************************************
+  ****************************************************************************
+                              Güncelleme metodları
+  ****************************************************************************
+  ****************************************************************************
+  ****************************************************************************
+*/
+
+  static Future<String> tokenInsert(String kayitId, String ip) async {
+    try {
+      var map = Map<String, dynamic>();
+      map['action'] = _SET_INSERT_TOKEN_ACTION;
+      map['kayitId'] = kayitId;
+      map['ip'] = ip;
+      final response = await http.post(ROOT, body: map);
+      print('Token sonuç: ${response.body}' + " id=" + kayitId);
       if (200 == response.statusCode) {
         String list = response.body;
         return list;
