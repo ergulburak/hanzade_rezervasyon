@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hanzade_rezervasyon/Pages/Rezervasyon/bilgiGirisi.dart';
 import 'package:hanzade_rezervasyon/Pages/Rezervasyon/masaSecimi.dart';
 import 'package:hanzade_rezervasyon/Pages/Rezervasyon/rezOnizleme.dart';
+import 'package:hanzade_rezervasyon/Pages/feedback.dart';
 import 'package:hanzade_rezervasyon/Pages/karsilama.dart';
 import 'package:hanzade_rezervasyon/Pages/login.dart';
 
@@ -21,6 +22,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => BilgiGirisSayfasi());
       case '/masasecimi':
         return MaterialPageRoute(builder: (_) => MasaSecimi());
+      case '/geribildirim':
+        return MaterialPageRoute(builder: (_) => GeriBildirim());
       case '/rezonizleme':
         return MaterialPageRoute(
             builder: (_) => RezervasyonOnizleme(

@@ -80,6 +80,24 @@ class _KarsilamaEkranState extends State<KarsilamaEkran> {
               child: Stack(
                 children: <Widget>[
                   Align(
+                    alignment: Alignment.bottomRight,
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(10, 10, 30, 20),
+                      child: InkWell(
+                          child: Text(
+                            "Geri Bildirim Yap",
+                            style: GoogleFonts.teko(
+                              color: Colors.white,
+                              fontSize: 20,
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
+                          onTap: () {
+                            Navigator.pushNamed(context, "/geribildirim");
+                          }),
+                    ),
+                  ),
+                  Align(
                     alignment: Alignment.topCenter,
                     child: Padding(
                       padding: EdgeInsets.all(10),
