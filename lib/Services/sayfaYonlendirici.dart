@@ -5,6 +5,7 @@ import 'package:hanzade_rezervasyon/Pages/Rezervasyon/rezOnizleme.dart';
 import 'package:hanzade_rezervasyon/Pages/feedback.dart';
 import 'package:hanzade_rezervasyon/Pages/karsilama.dart';
 import 'package:hanzade_rezervasyon/Pages/login.dart';
+import 'package:hanzade_rezervasyon/Pages/rezervasyonlarim.dart';
 
 import '../main.dart';
 
@@ -24,6 +25,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => MasaSecimi());
       case '/geribildirim':
         return MaterialPageRoute(builder: (_) => GeriBildirim());
+      case '/rezlerim':
+        return MaterialPageRoute(builder: (_) => Rezervasyonlarim());
       case '/rezonizleme':
         return MaterialPageRoute(
             builder: (_) => RezervasyonOnizleme(

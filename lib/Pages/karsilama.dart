@@ -179,6 +179,39 @@ class _KarsilamaEkranState extends State<KarsilamaEkran> {
                               ),
                             ),
                           ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(context, "/rezlerim");
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(5),
+                                  topRight: Radius.circular(5),
+                                  bottomLeft: Radius.circular(5),
+                                  bottomRight: Radius.circular(5)),
+                            ),
+                            width: globals.telefonWidth * 0.65,
+                            height: 50,
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Padding(
+                                padding: EdgeInsets.all(10),
+                                child: Center(
+                                  child: Text(
+                                    "Rezervasyonlarım",
+                                    style: GoogleFonts.teko(
+                                        color: Colors.black, fontSize: 20),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
                         )
                       ],
                     ),

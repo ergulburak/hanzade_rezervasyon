@@ -62,10 +62,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<void> _handleStartScreen() async {
     AuthService _auth = AuthService();
     if (await _auth.isLoggedIn()) {
-      Future.delayed(const Duration(seconds: 3),
+      Future.delayed(const Duration(seconds: 2),
           () => Navigator.pushNamed(context, "/karsilama"));
     } else {
-      Future.delayed(const Duration(seconds: 3),
+      Future.delayed(const Duration(seconds: 2),
           () => Navigator.pushNamed(context, "/login"));
     }
   }
