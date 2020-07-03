@@ -7,6 +7,7 @@ class Rezervasyon {
   String rezervasyonNotu;
   String rezervasyonMasa;
   String rezervasyonTarih;
+  String rezervasyonOlusturulmaZamani;
   Rezervasyon({
     this.id,
     this.rezervasyonAd,
@@ -16,6 +17,7 @@ class Rezervasyon {
     this.rezervasyonNotu,
     this.rezervasyonMasa,
     this.rezervasyonTarih,
+    this.rezervasyonOlusturulmaZamani,
   });
   factory Rezervasyon.fromJson(Map<String, dynamic> json) {
     return Rezervasyon(
@@ -26,6 +28,8 @@ class Rezervasyon {
         rezervasyonKisiSayisi: json['rezervasyon_kisi_sayisi'].toString(),
         rezervasyonNotu: json['rezervasyon_notu'].toString(),
         rezervasyonMasa: json['rezervasyon_masa'].toString(),
-        rezervasyonTarih: json['rezervasyon_tarih'].toString());
+        rezervasyonTarih: json['rezervasyon_tarih'].toString(),
+        rezervasyonOlusturulmaZamani:
+            json['rezervasyon_olusturulma_zamanı'].toString());
   }
 }

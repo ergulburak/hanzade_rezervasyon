@@ -33,10 +33,17 @@ class _RezervasyonlarimState extends State<Rezervasyonlarim> {
     super.initState();
   }
 
+  goBack() {
+    Navigator.of(context).pushNamed('/karsilama');
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () => Future.value(true),
+      onWillPop: () {
+        goBack();
+        return Future.value(false);
+      },
       child: Scaffold(
         body: Stack(
           children: <Widget>[

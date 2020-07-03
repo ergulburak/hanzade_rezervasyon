@@ -643,27 +643,45 @@ class _MasaSecimiState extends State<MasaSecimi> {
                                         int saatINT = int.parse(saat);
 
                                         if (saatINT < 8) {
-                                          globals.rezervasyonTarih = globals
-                                              .rezervasyonTarih
-                                              .add(Duration(days: -1));
-                                          var time = globals.rezervasyonTarih;
-                                          globals.rezervasyonTarih =
-                                              new DateTime(
-                                                  time.year,
-                                                  time.month,
-                                                  time.day,
-                                                  21,
-                                                  00,
-                                                  time.second,
-                                                  time.millisecond,
-                                                  time.microsecond);
-                                          gunDegisimiKontrol = true;
-                                          rezervasyonKontrol();
+                                          if (globals.rezervasyonTarih
+                                              .isBefore(DateTime.now())) {
+                                          } else {
+                                            globals.rezervasyonTarih = globals
+                                                .rezervasyonTarih
+                                                .add(Duration(days: -1));
+                                            var time = globals.rezervasyonTarih;
+                                            globals.rezervasyonTarih =
+                                                new DateTime(
+                                                    time.year,
+                                                    time.month,
+                                                    time.day,
+                                                    21,
+                                                    00,
+                                                    time.second,
+                                                    time.millisecond,
+                                                    time.microsecond);
+                                            gunDegisimiKontrol = true;
+                                            rezervasyonKontrol();
+                                          }
                                         } else {
-                                          globals.rezervasyonTarih = globals
-                                              .rezervasyonTarih
-                                              .add(Duration(hours: -1));
-                                          saatDegisinceKontol();
+                                          String saat2 = DateFormat('HH')
+                                              .format(globals.rezervasyonTarih
+                                                  .add(Duration(hours: -1)));
+                                          int saatINT2 = int.parse(saat2);
+                                          String saat3 = DateFormat('HH')
+                                              .format(DateTime.now());
+                                          int saatINT3 = int.parse(saat3);
+                                          print("Saat2:" +
+                                              saat2 +
+                                              " Saat3:" +
+                                              saat3);
+                                          if (saatINT2 < saatINT3 + 1) {
+                                          } else {
+                                            globals.rezervasyonTarih = globals
+                                                .rezervasyonTarih
+                                                .add(Duration(hours: -1));
+                                            saatDegisinceKontol();
+                                          }
                                         }
                                         setState(() {});
                                       },
@@ -900,7 +918,7 @@ class _MasaSecimiState extends State<MasaSecimi> {
                                         color: Colors.red,
                                       ),
                                       Text(
-                                        "Buraya bir takım bilgilendirme.",
+                                        "Sarı renkli masa sizin seçtiğiniz masadır.",
                                         style: GoogleFonts.teko(
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold,
