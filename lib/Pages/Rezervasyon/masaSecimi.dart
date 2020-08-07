@@ -342,291 +342,19 @@ class _MasaSecimiState extends State<MasaSecimi> {
                                       )
                                     : Expanded(
                                         flex: 1,
-                                        child: GridView.count(
-                                          primary: false,
-                                          padding: EdgeInsets.all(20),
-                                          crossAxisSpacing: 10,
-                                          mainAxisSpacing: 10,
-                                          crossAxisCount: 4,
-                                          children: <Widget>[
-                                            InkWell(
-                                              onTap: globals
-                                                      .masalar[0].masaRezDurumu
-                                                  ? () {}
-                                                  : () {
-                                                      globals.rezervasyonMasa =
-                                                          "1";
-                                                      print("1");
-                                                      setState(() {});
-                                                    },
-                                              child: SvgPicture.asset(
-                                                "assets/table.svg",
-                                                color: globals.masalar[0]
-                                                        .masaRezDurumu
-                                                    ? Colors.red
-                                                    : globals.rezervasyonMasa ==
-                                                            "1"
-                                                        ? Colors.amber
-                                                        : Colors.green,
-                                                matchTextDirection: true,
-                                                semanticsLabel: "Masa1",
-                                              ),
-                                            ),
-                                            InkWell(
-                                              onTap: globals
-                                                      .masalar[1].masaRezDurumu
-                                                  ? () {}
-                                                  : () {
-                                                      globals.rezervasyonMasa =
-                                                          "2";
-                                                      print("2");
-                                                      setState(() {});
-                                                    },
-                                              child: SvgPicture.asset(
-                                                "assets/table.svg",
-                                                color: globals.masalar[1]
-                                                        .masaRezDurumu
-                                                    ? Colors.red
-                                                    : globals.rezervasyonMasa ==
-                                                            "2"
-                                                        ? Colors.amber
-                                                        : Colors.green,
-                                                matchTextDirection: true,
-                                                semanticsLabel: "Masa1",
-                                              ),
-                                            ),
-                                            InkWell(
-                                              onTap: globals
-                                                      .masalar[2].masaRezDurumu
-                                                  ? () {}
-                                                  : () {
-                                                      globals.rezervasyonMasa =
-                                                          "3";
-                                                      print("3");
-                                                      setState(() {});
-                                                    },
-                                              child: SvgPicture.asset(
-                                                "assets/table.svg",
-                                                color: globals.masalar[2]
-                                                        .masaRezDurumu
-                                                    ? Colors.red
-                                                    : globals.rezervasyonMasa ==
-                                                            "3"
-                                                        ? Colors.amber
-                                                        : Colors.green,
-                                                matchTextDirection: true,
-                                                semanticsLabel: "Masa1",
-                                              ),
-                                            ),
-                                            InkWell(
-                                              onTap: globals
-                                                      .masalar[3].masaRezDurumu
-                                                  ? () {}
-                                                  : () {
-                                                      globals.rezervasyonMasa =
-                                                          "4";
-                                                      print("4");
-                                                      setState(() {});
-                                                    },
-                                              child: SvgPicture.asset(
-                                                "assets/table.svg",
-                                                color: globals.masalar[3]
-                                                        .masaRezDurumu
-                                                    ? Colors.red
-                                                    : globals.rezervasyonMasa ==
-                                                            "4"
-                                                        ? Colors.amber
-                                                        : Colors.green,
-                                                matchTextDirection: true,
-                                                semanticsLabel: "Masa1",
-                                              ),
-                                            ),
-                                            InkWell(
-                                              onTap: globals
-                                                      .masalar[4].masaRezDurumu
-                                                  ? () {}
-                                                  : () {
-                                                      globals.rezervasyonMasa =
-                                                          "5";
-                                                      print("5");
-                                                      setState(() {});
-                                                    },
-                                              child: SvgPicture.asset(
-                                                "assets/table.svg",
-                                                color: globals.masalar[4]
-                                                        .masaRezDurumu
-                                                    ? Colors.red
-                                                    : globals.rezervasyonMasa ==
-                                                            "5"
-                                                        ? Colors.amber
-                                                        : Colors.green,
-                                                matchTextDirection: true,
-                                                semanticsLabel: "Masa1",
-                                              ),
-                                            ),
-                                            InkWell(
-                                              onTap: globals
-                                                      .masalar[5].masaRezDurumu
-                                                  ? () {}
-                                                  : () {
-                                                      globals.rezervasyonMasa =
-                                                          "6";
-                                                      print("6");
-                                                      setState(() {});
-                                                    },
-                                              child: SvgPicture.asset(
-                                                "assets/table.svg",
-                                                color: globals.masalar[5]
-                                                        .masaRezDurumu
-                                                    ? Colors.red
-                                                    : globals.rezervasyonMasa ==
-                                                            "6"
-                                                        ? Colors.amber
-                                                        : Colors.green,
-                                                matchTextDirection: true,
-                                                semanticsLabel: "Masa1",
-                                              ),
-                                            ),
-                                            InkWell(
-                                              onTap: globals
-                                                      .masalar[6].masaRezDurumu
-                                                  ? () {}
-                                                  : () {
-                                                      globals.rezervasyonMasa =
-                                                          "7";
-                                                      print("7");
-                                                      setState(() {});
-                                                    },
-                                              child: SvgPicture.asset(
-                                                "assets/table.svg",
-                                                color: globals.masalar[6]
-                                                        .masaRezDurumu
-                                                    ? Colors.red
-                                                    : globals.rezervasyonMasa ==
-                                                            "7"
-                                                        ? Colors.amber
-                                                        : Colors.green,
-                                                matchTextDirection: true,
-                                                semanticsLabel: "Masa1",
-                                              ),
-                                            ),
-                                            InkWell(
-                                              onTap: globals
-                                                      .masalar[7].masaRezDurumu
-                                                  ? () {}
-                                                  : () {
-                                                      globals.rezervasyonMasa =
-                                                          "8";
-                                                      print("8");
-                                                      setState(() {});
-                                                    },
-                                              child: SvgPicture.asset(
-                                                "assets/table.svg",
-                                                color: globals.masalar[7]
-                                                        .masaRezDurumu
-                                                    ? Colors.red
-                                                    : globals.rezervasyonMasa ==
-                                                            "8"
-                                                        ? Colors.amber
-                                                        : Colors.green,
-                                                matchTextDirection: true,
-                                                semanticsLabel: "Masa1",
-                                              ),
-                                            ),
-                                            InkWell(
-                                              onTap: globals
-                                                      .masalar[8].masaRezDurumu
-                                                  ? () {}
-                                                  : () {
-                                                      globals.rezervasyonMasa =
-                                                          "9";
-                                                      print("9");
-                                                      setState(() {});
-                                                    },
-                                              child: SvgPicture.asset(
-                                                "assets/table.svg",
-                                                color: globals.masalar[8]
-                                                        .masaRezDurumu
-                                                    ? Colors.red
-                                                    : globals.rezervasyonMasa ==
-                                                            "9"
-                                                        ? Colors.amber
-                                                        : Colors.green,
-                                                matchTextDirection: true,
-                                                semanticsLabel: "Masa1",
-                                              ),
-                                            ),
-                                            InkWell(
-                                              onTap: globals
-                                                      .masalar[9].masaRezDurumu
-                                                  ? () {}
-                                                  : () {
-                                                      globals.rezervasyonMasa =
-                                                          "10";
-                                                      print("10");
-                                                      setState(() {});
-                                                    },
-                                              child: SvgPicture.asset(
-                                                "assets/table.svg",
-                                                color: globals.masalar[9]
-                                                        .masaRezDurumu
-                                                    ? Colors.red
-                                                    : globals.rezervasyonMasa ==
-                                                            "10"
-                                                        ? Colors.amber
-                                                        : Colors.green,
-                                                matchTextDirection: true,
-                                                semanticsLabel: "Masa1",
-                                              ),
-                                            ),
-                                            InkWell(
-                                              onTap: globals
-                                                      .masalar[10].masaRezDurumu
-                                                  ? () {}
-                                                  : () {
-                                                      globals.rezervasyonMasa =
-                                                          "11";
-                                                      print("11");
-                                                      setState(() {});
-                                                    },
-                                              child: SvgPicture.asset(
-                                                "assets/table.svg",
-                                                color: globals.masalar[10]
-                                                        .masaRezDurumu
-                                                    ? Colors.red
-                                                    : globals.rezervasyonMasa ==
-                                                            "11"
-                                                        ? Colors.amber
-                                                        : Colors.green,
-                                                matchTextDirection: true,
-                                                semanticsLabel: "Masa1",
-                                              ),
-                                            ),
-                                            InkWell(
-                                              onTap: globals
-                                                      .masalar[11].masaRezDurumu
-                                                  ? () {}
-                                                  : () {
-                                                      globals.rezervasyonMasa =
-                                                          "12";
-                                                      print("12");
-                                                      setState(() {});
-                                                    },
-                                              child: SvgPicture.asset(
-                                                "assets/table.svg",
-                                                color: globals.masalar[11]
-                                                        .masaRezDurumu
-                                                    ? Colors.red
-                                                    : globals.rezervasyonMasa ==
-                                                            "12"
-                                                        ? Colors.amber
-                                                        : Colors.green,
-                                                matchTextDirection: true,
-                                                semanticsLabel: "Masa1",
-                                              ),
-                                            ),
-                                          ],
-                                        ),
+                                        child: GridView.builder(
+                                            primary: false,
+                                            padding:
+                                                EdgeInsets.fromLTRB(5, 0, 5, 0),
+                                            itemCount: globals.masalar.length,
+                                            gridDelegate:
+                                                new SliverGridDelegateWithFixedCrossAxisCount(
+                                                    crossAxisCount: 4),
+                                            itemBuilder: (context, index) {
+                                              return masa(
+                                                  globals.masalar[index],
+                                                  index);
+                                            }),
                                       ),
                             Align(
                               alignment: Alignment.center,
@@ -675,7 +403,14 @@ class _MasaSecimiState extends State<MasaSecimi> {
                                               saat2 +
                                               " Saat3:" +
                                               saat3);
-                                          if (saatINT2 < saatINT3 + 1) {
+                                          if (saatINT2 < saatINT3) {
+                                            if (globals.rezervasyonTarih
+                                                .isAfter(DateTime.now())) {
+                                              globals.rezervasyonTarih = globals
+                                                  .rezervasyonTarih
+                                                  .add(Duration(hours: -1));
+                                              saatDegisinceKontol();
+                                            }
                                           } else {
                                             globals.rezervasyonTarih = globals
                                                 .rezervasyonTarih
@@ -939,6 +674,31 @@ class _MasaSecimiState extends State<MasaSecimi> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget masa(Masa masaNesne, int numara) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+      child: InkWell(
+        onTap: masaNesne.masaRezDurumu
+            ? () {}
+            : () {
+                globals.rezervasyonMasa = masaNesne.qrMasano;
+                print(masaNesne.qrMasano);
+                setState(() {});
+              },
+        child: SvgPicture.asset(
+          "assets/table.svg",
+          color: masaNesne.masaRezDurumu
+              ? Colors.red
+              : globals.rezervasyonMasa == masaNesne.qrMasano
+                  ? Colors.amber
+                  : Colors.green,
+          matchTextDirection: true,
+          semanticsLabel: "Masa " + masaNesne.qrMasano,
         ),
       ),
     );

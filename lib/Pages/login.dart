@@ -73,6 +73,8 @@ class _LoginEkraniState extends State<LoginEkrani> {
           Navigator.of(context).pushNamed("/karsilama");
         } catch (e) {
           BotToast.showText(text: "İşlem Başarısız!\n" + e.toString());
+          _authMode = AuthMode.LOGIN;
+          setState(() {});
         }
       } else if (_authMode == AuthMode.KAYIT) {
         if (_passwordKayit.text == _passwordKontrolKayit.text) {

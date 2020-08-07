@@ -509,12 +509,22 @@ class _BilgiGirisSayfasiState extends State<BilgiGirisSayfasi> {
                                                 ),
                                               ),
                                               onTap: () {
+                                                DateTime tarih = DateTime.now()
+                                                    .add(Duration(days: 1));
+
+                                                tarih = new DateTime(
+                                                    tarih.year,
+                                                    tarih.month,
+                                                    tarih.day,
+                                                    8,
+                                                    0,
+                                                    0);
+                                                print(tarih);
                                                 DatePicker.showDateTimePicker(
                                                     context,
                                                     showTitleActions: true,
-                                                    minTime: DateTime.now().add(
-                                                        Duration(hours: 1)),
-                                                    maxTime: DateTime.now().add(
+                                                    minTime: tarih,
+                                                    maxTime: tarih.add(
                                                         Duration(days: 10)),
                                                     theme: DatePickerTheme(
                                                       headerColor:
@@ -549,6 +559,13 @@ class _BilgiGirisSayfasiState extends State<BilgiGirisSayfasi> {
                                                     BotToast.showText(
                                                         text:
                                                             "Lütfen 08:00 ile 22:00 arasında bir saat seçiniz.");
+                                                  } else if (date.day <
+                                                          tarih.day ||
+                                                      date.day >
+                                                          tarih.day + 10) {
+                                                    BotToast.showText(
+                                                        text:
+                                                            "Bir gün sonrasından itibaren 10 gün ilerisi için rezervasyon yapabilirsiniz.");
                                                   } else {
                                                     _secilenTarih = date;
                                                     _rezervasyonTarihi

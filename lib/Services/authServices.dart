@@ -17,6 +17,21 @@ class AuthService {
     return true;
   }
 
+  Future deleteUser(String email, String password) async {
+    try {
+      FirebaseUser user = await _firebaseAuth.currentUser();
+      AuthCredential credentials =
+          EmailAuthProvider.getCredential(email: email, password: password);
+      print(user);
+      AuthResult result = await user.reauthenticateWithCredential(credentials);
+      await result.user.delete();
+      return true;
+    } catch (e) {
+      print("@@BAŞARISIZ@@" + e.toString());
+      return null;
+    }
+  }
+
   // Email & Password Sign Up
   Future<String> createUserWithEmailAndPassword(String email, String password,
       String name, String phoneNumber, BuildContext context) async {
@@ -57,9 +72,13 @@ class AuthService {
       else {
         print(
             'Something has gone horribly wrong, please try later or never -> ${exception.message}');
-        BotToast.showText(
-            text: exception.message, duration: Duration(seconds: 5));
       }
+      deleteUser(email, password);
+      BotToast.showText(
+          text: "Hatalı bilgisi girişi", duration: Duration(seconds: 5));
+      Navigator.of(context).pushNamed('/login', arguments: currentUser.user);
+
+      //_firebaseAuth.signOut();
     };
 
     FirebaseAuth.instance.verifyPhoneNumber(
