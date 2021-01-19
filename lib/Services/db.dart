@@ -5,7 +5,7 @@ import 'package:hanzade_rezervasyon/Services/tablo/rezervasyon.dart';
 import 'package:http/http.dart' as http;
 
 class Services {
-  static const ROOT = 'https://hanzade.live/Classes/Util/RezervasyonApp.php';
+  static const ROOT = 'KALDIRILDI';
 
   static const _GET_MASA_ALL_ACTION = 'GET_MASA_ALL';
   static const _GET_MASA_BILGI_ACTION = 'MASA_BILGI';
